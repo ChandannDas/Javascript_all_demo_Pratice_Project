@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <title>javascript-inline</title>
+    <head>
+        <script>
+           function clickcreate(){
+          foldername =  prompt("createnew Folder","newfolder")
+          if(foldername==null){
+          document.write("cancelled");
+           }else if(foldername==""){
+            document.write("please provide the folder name..");
+           }else{
+             document.querySelector("p").innerHTML+="folder created" +foldername+"</br>";
+           }
+        }
+         </script>
+    </head>
+    <body>
+       <button onclick="clickcreate()">Folder</button>   
+       <p></p>  
+    </body>
+</html>

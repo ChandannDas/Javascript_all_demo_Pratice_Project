@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<title>converted</title>
+
+<head>
+   <script>
+      function Changecase(){
+         var username=document.getElementById("textName").value;
+         var uppercase=username.charAt(0);
+         var restchar=username.substring(1);
+         var sentense=uppercase.toUpperCase()+restchar.toLowerCase();
+         document.getElementById("textName").value=sentense;
+      }
+   </script>
+</head>
+<body>
+   <fieldset>
+      <legend>String</legend>
+      <div>
+         <input type="text" id="textName" onblur="Changecase()">
+      </div>
+     
+   </fieldset>
+</body>
+
+</html>

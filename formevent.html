@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>clipboard event</title>
+        <script>
+            function ssubmit(){
+               alert('submit data');
+            }
+            function cancelclick(){
+                alert('data reset');
+            }
+            function citychange(){
+                fromregister.submit(); 
+            }
+        </script>
+    </head>
+    <body>
+      <form onsubmit="ssubmit()" onreset="cancelclick()" name="fromregister">
+        <dl>
+            <dt>username</dt>
+            <dd><input type="text" name="username"></dd>
+            <dt>age</dt>
+            <dd><input type="number" name="age"></dd>
+            <dt>city</dt>
+            <dd>
+                <select onchange="citychange()">
+                    <option value="delhi">delhi</option>
+                    <option value="delhi">hyd</option>
+                    <option value="delhi">bang</option>
+                </select>
+            </dd>
+        </dl>
+            <button type="submit">submit</button>
+            <button type="reset">cancel</button>
+      
+      </form>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <title>collpse</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <head>
+       <script>
+        function orderclick(){
+            document.getElementById("lbname").innerHTML=document.getElementById("txtname").value;
+            document.getElementById("lbmn").innerHTML=document.getElementById("txtmobile").value;
+
+            var mealradio =document.getElementById("meal");
+            var snacksradio=document.getElementById("snacks");
+           
+            var chickencheck=document.getElementById("chickenrole");
+            var snacksscheck=document.getElementById("snackssm");
+            
+            var mealname="";
+            var snacksname="";
+
+            var mealamount= 0;
+            var snacksamount= 0;
+
+            if(mealradio.checked){
+                mealname=mealradio.value;
+                mealamount=60;
+            }
+            if(snacksradio.checked){
+              mealname=mealradio.value;
+              mealamount=160;
+            }
+            if(chickencheck.checked){
+                snacksname+=chickencheck.value+"<br>";
+                snacksamount=360;
+                mealamount+=snacksamount;
+            }
+            if(snacksscheck.checked){
+                snacksname+=snacksscheck.value;
+                snacksamount=100;
+                mealamount+=snacksamount;
+            }
+
+            document.getElementById("mealname").innerHTML=mealname;
+            document.getElementById("lbsnack").innerHTML=snacksname;
+            document.getElementById("totalamount").innerHTML=  mealamount ;
+        }
+       </script>
+    </head>
+    <body class="container-fluid btn btn-danger">
+        <h2><img src="../assets/kfcbanner.PNG" width="100%"></h2>
+     <div class="accordion" id="kfc">
+        <div class="accordion-item">
+            <div class="accordion-header">
+               <button class="btn btn-danger w-100" data-bs-toggle="collapse" data-bs-target="#role">
+                <h2>Customer details</h2>
+               </button>
+            </div>
+            <div  class="accordion-body accordion-collapse collapse" data-bs-parent="#kfc" id="role" >
+             <dl>
+                <dt>Customer Name</dt>
+                <dd><input type="text" class="form-control" id="txtname"></dd>
+                <dt>mobile</dt>
+                <dd><input type="text" class="form-control" id="txtmobile"></dd>
+             </dl>
+            </div>
+            </div>
+            
+     <div class="accordion-item">
+        <div class="accordion-header">
+            <div>
+               <button class="btn btn-danger w-100" data-bs-toggle="collapse" data-bs-target="#mealbox">
+                <h2>mealbox</h2>
+               </button>
+            </div>
+            <div class="accordion-body accordion-collapse collapse" data-bs-parent="#kfc" id="mealbox" >
+              <div class="row">
+                 <div class="col text-center">
+                  <img src="../assets/Boxmeal.PNG" width="300" height="300" >
+                 <div>
+                    <input type="radio" value="mealbox" name="meal" id="meal" class="form-check-input"> meal Box [&#8377 ;60/-]
+                 </div>
+                </div>
+                 <div class="col text-center">
+                    <img src="../assets/snacks - Copy.PNG" width="300" height="300" >
+                   <div>
+                      <input type="radio" value="snacks" name="meal" id="snacks" class="form-check-input"> snacks Box [&#8377 ;160/-]
+                   </div>
+                </div>
+              </div>
+            </div>
+        </div>
+     </div>
+     <div class="accordion-item">
+        <div class="accordion-header">
+             <button class=" btn btn-danger w-100" data-bs-toggle="collapse" data-bs-target="#snacksrole">
+                <h2>snacks</h2>
+             </button>
+        </div>
+        <div class="accordion-body accordion-collapse collapse" data-bs-parent="#kfc" id="snacksrole">
+            <div class="row">
+                <div class="col text-center">
+                 <img src="../assets/chickenrole - Copy.PNG" width="300" height="300" >
+                <div>
+                   <input type="checkbox" value="chickenrole" name="chickenrole" id="chickenrole" class="form-check-input">Chicken Role [&#8377 ;360/-]
+                </div>
+            </div>
+                <div class="col text-center">
+                   <img src="../assets/snacks - Copy.PNG" width="300" height="300" >
+                  <div>
+                     <input type="checkbox" value="snacksrole" name="snacks" id="snackssm" class="form-check-input"> snacks Boxmeal [&#8377 ;100/-]
+                  </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col">
+                    <button class="btn btn-danger w-100" onclick="orderclick()" data-bs-toggle="modal" data-bs-target="#fire">Place Order</button>
+                </div>
+                <div class="modal fade" id="fire">
+                 <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class=" modal-header">
+                          <h3>Bill summery</h3>
+                         <button class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <div class="modal-body">
+                          <dl class="w-100">
+                            <dt class="col-1">Customer Name</dt>
+                            <dd class="col-9" id="lbname"></dd>
+                            <dt class="col-1">mobile no</dt>
+                            <dd class="col-9" id="lbmn"></dd>
+                            <dt class="col-1">meal name</dt>
+                            <dd class="col-9" id="mealname"></dd>
+                            <dt class="col-1">snacks name</dt>
+                            <dd class="col-9" id="lbsnack"></dd>
+                            <dt class="col-1">total amount</dt>
+                            <dd class="col-9" id="totalamount"></dd>
+                          </dl>
+                      </div>
+                      <div class="modal-footer">
+                        <button data-bs-dismiss="modal" class="btn btn-success w-25">ok</button>
+                      </div>
+                  </div>
+                 </div>
+                </div>
+             </div>
+    </div>
+     </div>
+        <script src="../../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>

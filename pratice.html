@@ -1,0 +1,13 @@
+<script>
+    function f1(){
+        var products =[
+           { Name:"TV",Categoery:"electronics"},
+           {Name :"shoe",Categoery:"footware"}
+        ];
+        for(var item of products){
+         var it= products.filter(function(item){return item.Categoery=="electronics"});
+      document.write(`${it.Name}`);
+        }
+    }
+    f1();
+</script>

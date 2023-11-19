@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <title>switch</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <head>
+        <script>
+          var categories=["Select a category","gift","kfc"];
+          var gift =["select gift","rose","gift"]
+          var kfc=["select kfc item","snacks","boxmeal"]
+
+          var data=[
+            {Name:'rose' ,price:'13000.21' ,photo:'../../public/assets/Rose.jpg'},
+            {Name:'gift',price:'13000.21' ,photo:'../../public/assets/gift.jpg'},
+            {Name:'snacks',price:'13000.21' ,photo:'../../public/assets/snacks.PNG'},
+            {Name:'boxmeal',price:'13000.21' ,photo:'../../public/assets/Boxmeal.PNG'}
+
+          ];
+
+          var products=[];
+          function loadCategories(){
+            for(var category of categories){
+               var option=document.createElement("option");
+               option.value=category;
+               option.text=category;
+               document.getElementById("categories").appendChild(option);
+            }
+          }
+           function loadBody(){
+            loadCategories();
+             getcartitemscount();
+           }
+           function loadproducts(){
+            document.getElementById("products").innerHTML="";
+           for(var item of products){
+           var option=document.createElement("option");
+           option.value=item;
+           option.text=item;
+           document.getElementById("products").appendChild(option);
+           }
+           }
+           function changeCategories(){
+            var categoryname=document.getElementById("categories").value;
+            switch(categoryname){
+               case "gift": 
+               products=gift;
+                loadproducts();
+                break;
+                case "kfc":
+                products=kfc;
+                loadproducts();
+                break;
+                default :
+               products=["please selecte one categories"]
+               loadproducts();
+                break;
+           }
+        }
+        var searchproduct={};
+      function productChange(){
+      var productname=document.getElementById("products").value;
+      searchproduct=data.find(function(product){
+        return product.Name==productname;
+      })
+       document.getElementById("lbname").innerHTML=searchproduct.Name;
+       document.getElementById("imgproduct").src=searchproduct.photo;
+       document.getElementById("lbprice").innerHTML=searchproduct.price;
+      }
+      var cartitems=[];
+      
+      function getcartitemscount(){
+        document.getElementById("cart").innerHTML=cartitems.length;
+      }
+      function addTocartclick(){
+        cartitems.push(searchproduct);
+        alert(`${searchproduct.Name} add to cart`)
+        getcartitemscount();
+      }
+          
+  function loadcartitem(){
+    for(var item of cartitems){  
+      var tr=document.createElement("tr");
+      var tdName=document.createElement("td");
+      var tdPrice=document.createElement("td");
+      var tdPhoto=document.createElement("td");
+
+         tdName.innerHTML=item.Name;
+         tdPrice.innerHTML=item.price;
+
+         var img=document.createElement("img");
+         img.width="50";
+         img.height="50";
+         img.src=item.photo;
+         tdPhoto.appendChild(img);
+          
+         tr.appendChild(tdName);
+         tr.appendChild(tdPrice);
+         tr.appendChild(tdPhoto);
+
+         document.querySelector("tbody").appendChild(tr);
+    }
+  }
+
+        </script>
+    </head>
+    <body class="container-fluid" onload="loadBody()">
+        <header class="bg-danger text-center w-100 p-2" >
+          <h2>Amazon Shopping</h2>
+        </header>
+        <div class="row">
+         <div class="col-3">
+          <div class="mt-3">
+            <label class="form-label">select acategories</label>
+            <select class="form-select" id="categories" onchange="changeCategories()">
+        
+            </select>
+          </div>
+          <div class="mt-3">
+            <label class="form-label"> select a product</label>
+            <select class="form-select" id="products" onchange="productChange()">
+
+            </select>
+          </div>
+          <div class="mt-3 w-100">
+            <div class="card">
+            <div class="card-header ">
+            <h2 id="lbname"></h2>
+            </div>
+            <div class="card-body w-50">
+            <img id="imgproduct" width="400" height="200">
+            <p id="lbprice"></p>
+            </div>
+            <div class="card-footer text-center">
+              <button onclick="addTocartclick()"  class="btn btn-danger w-75">
+               <span class="bi bi-cart4"></span>
+               Add to cart
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+         <div class="col-7">
+
+         </div>
+         <div class="col-2">
+          <div class="mt-3">
+          <button onclick="loadcartitem()" class="btn btn-primary" data-bs-target="#table" data-bs-toggle="modal">
+            <span class="bi bi-cart2"></span>
+            [<label id="cart"></label>]
+            Your cart items
+          </button>
+          </div>
+         </div>
+         <div class="modal fade" id="table">
+          <div class="modal-dialog">
+           <div class="modal-content">
+            <div class="modal-header">
+              <h3>your cart items</h3>
+              <button class="btn btn-close" data-bs-dismiss="modal"></button>
+             </div>
+             <div class="modal-body">
+               <table class="table table-hover ">
+                  <thead>
+                   <tr>
+                     <th>Name</th>
+                     <th>price</th>
+                     <th>item</th>
+                   </tr>
+                  </thead>
+                  <tbody>
+ 
+                  </tbody>
+               </table>
+             </div>
+ 
+           </div>
+          </div>
+         </div>
+        </div>
+        <script src="../../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>

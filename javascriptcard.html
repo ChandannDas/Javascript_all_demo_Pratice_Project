@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>card</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+
+<head>
+  <script>
+    function getProducts(URL) {
+      fetch(URL)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          document.getElementById("cardimg").src = data.image;
+          document.getElementById("cardtitle").innerHTML = data.title;
+          document.getElementById("description").innerHTML = data.description;
+
+
+        })
+    }
+
+
+    function bodyLoad() {
+      getProducts(`https://fakestoreapi.com/products/${count}`);
+    }
+    var count = 1;
+    function rightclick() {
+      count++;
+      getProducts(`https://fakestoreapi.com/products/${count}`);
+      document.getElementById("range").value = count;
+    }
+
+    function leftclick() {
+
+      count--;
+      getProducts(`https://fakestoreapi.com/products/${count}`);
+      document.getElementById("range").value = count;
+
+    }
+
+    function changephoto() {
+      var id = document.getElementById("range").value;
+      getProducts(`https://fakestoreapi.com/products/${id}`);
+    }
+
+  </script>
+  <style>
+    #description {
+      position: fixed;
+      right: 20px;
+      top: 800px;
+      border: 2px solid black;
+      padding: 4px;
+      background-color: darkcyan;
+      color: black;
+      width: 800px;
+      height: 80px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body onload="bodyLoad()">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center" style="height: 800px;">
+
+      <div>
+        <div>
+          <input type="range" min="1" max="20" value="1" onchange="changephoto()" class="form-range" id="range">
+        </div>
+        <div class="card" style="height: 600px; width: 400px;">
+          <h2 class="text-center m-1">product Details</h2>
+          <div class="card-header text-center">
+            <h3 id="cardtitle"></h3>
+          </div>
+          <div class="card-body text-center">
+            <img width="300" id="cardimg" height="300">
+            <p id="description"></p>
+          </div>
+          <div class="card-footer text-center">
+            <button class="btn btn-danger" onclick="leftclick()" id="changerange">
+              <span class="bi bi-chevron-bar-left"></span>
+            </button>
+            <button class="btn btn-danger" onclick="rightclick()" id="changeran">
+              <span class="bi bi-chevron-bar-right"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

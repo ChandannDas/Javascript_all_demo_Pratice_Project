@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>table</title>
+      <script>
+          var products=[
+            {Name:"mobile",price:12000.44,photo:"../assets/visa.PNG"},
+            {Name:"mobile",price:12000.44,photo:"../assets/watch.jpg"},
+            {Name:"mobile",price:12000.44,photo:"../assets/master.PNG"},
+            {Name:"mobile",price:12000.44,photo:"../assets/master.PNG"}
+          ];
+          function bodyload(){
+            for(var product of products){
+             var tr=document.createElement("tr");
+             var tdname=document.createElement("td");
+             var tdprice=document.createElement("td");
+             var tdphoto=document.createElement("td");
+
+             tdname.innerHTML=product.Name;
+             tdprice.innerHTML=product.price;
+            var img=document.createElement("img"); 
+             img.src=product.photo;
+             img.width="100";
+             img.height="100";
+              
+             tdphoto.appendChild(img);
+             
+             tr.appendChild(tdname);
+             tr.appendChild(tdprice);
+             tr.appendChild(tdphoto);
+              
+             document.querySelector("tbody").appendChild(tr);
+            }
+          }
+      </script>
+    </head>
+    <body onload="bodyload()">
+      <table border="1" width="600">
+         <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>preview</th>
+         </tr>
+        
+      </table>  
+    </body>
+</html>

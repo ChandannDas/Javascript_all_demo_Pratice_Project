@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <title>keyboard</title>
+        <script>
+         var uasername=[
+              {Username:'john'},
+              {Username:'john12'},
+              {Username:'devid'}
+         ];
+         function userkeyup(){
+          var username=document.getElementById("usernametxt").value;
+          var msg=document.getElementById("msg");
+          for(var us of uasername){
+            if(us.Username==username){
+                msg.innerHTML='username taken';
+                msg.style.color='red';
+                break;
+            }else{
+               msg.innerHTML='username avilable';
+                msg.style.color='green';
+            }
+          }
+         }
+         function keyup(){
+            var password=document.getElementById("passwordtxt").value;
+            var regex=/(?=.*[A-Z])\w{4,10}/;
+            var ps=document.getElementById("ms");
+            if(password.match(regex)){
+             ps.innerHTML='strong password'; 
+             ps.style.color='green';
+            }else{
+                if(password.length<4){
+                    document.getElementById("ms").innerHTML="poor password";
+                    ps.style.color='red';  
+                }else{
+                    document.getElementById("ms").innerHTML="week password";
+                    ps.style.color='red';  
+                }
+            }
+         }
+        </script>
+    </head>
+    <body class="container-fluid">
+        <div>
+            <dl>
+                <dt>Username</dt>
+                <dd><input type="text" id="usernametxt" onkeyup="userkeyup()"></dd>
+                <div>
+                    <p id="msg"></p>
+                </div>
+                <dt>password</dt>
+                <dd><input type="text" id="passwordtxt" onkeyup="keyup()">
+                    <div>
+                        <p id="ms"></p>
+                    </div>
+            </dd>
+            </dl>
+        </div>
+    </body>
+</html>

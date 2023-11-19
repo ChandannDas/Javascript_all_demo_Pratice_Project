@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <title>mouseover</title>
+    <head>
+        <script>
+            function loadbody(){
+         var img=document.getElementById("gallery");
+        var im=document.createElement("img");
+        im.src="/bootstrap icon/assets/Carousel-1.PNG";
+        img.appendChild(im);
+            }
+        </script>
+    </head>
+    <body onload="loadbody()">
+        <marquee  onmouseover="this.stop()" onmouseout="this.start()">
+        <div id="gallery">
+         
+        </div>
+    </marquee>
+    </body>
+</html>

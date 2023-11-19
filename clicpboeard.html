@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>clipboard event</title>
+        <script>
+            function cut(){
+                document.getElementById("msg").innerHTML='cut the data';
+                
+            }
+            function copy(){
+                document.getElementById("msg").innerHTML='copy the data';
+           
+            }
+            function paste(){
+                document.getElementById("msg").innerHTML='paste the data';
+            }
+        </script>
+    </head>
+    <body>
+      <fieldset>
+        <legend>register</legend>
+        <textarea  cols="30" rows="7" oncut="cut()" oncopy="copy()" onpaste="paste()"></textarea>
+      </fieldset>
+      <h2 id="msg" style="text-align: center;"></h2>
+    </body>
+</html>

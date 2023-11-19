@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>clipboard event</title>
+        <script>
+           document.oncontextmenu=function(){
+            alert('right click disable on page');
+            return true;
+           }
+           document.onselectstart=function(){
+            return true;
+           }
+        </script>
+    </head>
+    <body>
+     <h1>page is sequre you can't able to copy ,cut ,paste</h1>
+    </body>
+</html>

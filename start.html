@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>card-body</title>
+        <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+        
+        <script>
+             function cardVarify(){
+                var card=document.getElementById("cardtext").value;
+                var cardimg=document.getElementById("cardimg");
+                var msg=document.getElementById("msg");
+                var email=document.getElementById("emailt").value;
+                if(card.startsWith("4444")){
+                    cardimg.src="/bootstrap icon/assets/master.PNG"
+                }else if(card.startsWith("5555")){
+                    cardimg.src="/bootstrap icon/assets/visa.PNG"
+                }else{
+                    cardimg.src="";
+                    cardimg.alt="N/A"
+                }
+             }
+             function email(){
+                var msg=document.getElementById("msg");
+                var email=document.getElementById("emailt").value;
+                if(email.endsWith("gmail.com")){
+                    msg.innerHTML="email verified"
+                }else{
+                    msg.innerHTML="Wrong mail id"
+                }
+             }
+        </script>
+    </head>
+    <body class="container-fluid">
+        <fieldset>
+            <legend>card</legend>
+            <div>
+                <h3>Card-number</h3>
+                <div class="input-group" >
+                    <input type="text" id="cardtext" onkeyup="cardVarify()" class="form-control">
+                    <img class="input-group-text" id="cardimg" class="img-fluid" width="100px">
+               </div>
+               </div>
+        </fieldset>
+        <div class="mt-4">
+            <input type="text" id="emailt" onkeyup="email()"  class="form-control">  
+            <p id="msg"></p>   
+        </div>
+       
+    </body>
+</html>

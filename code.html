@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <title>create element</title>
+   <head>
+    <script>
+         var product=["../assets/visa.PNG","../assets/watch.jpg","../assets/master.PNG"];
+      function bodyload(){
+       for(var path of product){
+       var pic= document.createElement("img");
+       pic.src=path;
+       pic.width="100"
+       pic.height="100";
+        document.getElementById("container").appendChild(pic);
+
+        var option =document.createElement("option");
+        option.text=path;
+        document.querySelector("select").appendChild(option);
+
+        var li=document.createElement("li");
+        li.innerHTML=path;
+        document.querySelector("ol").appendChild(li);
+       }
+      }
+    </script>
+   </head>
+   <body onload="bodyload()">
+   <div id="container">
+
+   </div>
+   <h2>img path</h2>
+   <select>
+
+   </select>
+   <h3>order list</h3>
+   <ol>
+
+   </ol>
+   </body>
+</html>

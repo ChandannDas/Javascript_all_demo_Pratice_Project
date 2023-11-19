@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <title>modal</title>
+   <head>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+      function submit(){
+      document.getElementById("product").style.display="block";
+      document.getElementById("regbutton").style.display="none";
+
+     document.getElementById("lbName").innerHTML=document.getElementById("txtname").value;
+      document.getElementById("lbprice").innerHTML=document.getElementById("txtprice").value;
+      document.getElementById("city").innerHTML=document.getElementById("cities").value;
+
+    stock = "";
+    stockcheckbox=document.getElementById("optStock").value;
+    if(stockcheckbox.checked){
+        stock="available"
+    }else{
+        stock="notavailabe"
+    }
+      document.getElementById("lbstock").innerHTML=stock;
+      }
+    </script>
+   </head>
+   <body class="container-fluid">
+ <div class="mt-2" id="regbutton">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregister">Register</button>
+ </div>
+    <div class="modal" id="modalregister">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>registration form</h2>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+               </div>
+               <div class="modal-body" >
+                <dt>Username</dt>
+                  <dd><input type="text" class="form-control" id="txtname"></dd>
+                  <dt>price</dt>
+                  <dd><input type="text" class="form-control" id="txtprice"></dd>
+                 <dt>shipped to</dt>
+                 <select class="form-control" id="cities">
+                      <option> delhi</option>
+                      <option>mumbai</option>
+                 </select>
+                 <dt>stock</dt>
+                 <dd class="form-switch">
+                    <input id="optStock"  type="checkbox" class="form-check-input"> avilable
+                 </dd>
+               </div>
+               <div class="modal-footer">
+                 <button onclick="submit()" data-bs-toggle="modal" class="btn btn-primary" id="submitclick">submit</button>
+                 <button data-bs-dismiss="modal" class="btn btn-danger">cancel</button>
+               </div>
+           </div>
+        </div>
+    </div>
+    <div id="product"  >
+        <h2>product details</h2>
+        <dl class="row">
+        <dt class="col-3">Name</dt>
+        <dd class="col-9" id="lbName"></dd>
+        <dt class="col-3">Price</dt>
+        <dd class="col-9" id="lbprice"></dd>
+        <dt class="col-3">Shipped to</dt>
+        <dd class="col-9" id="city"></dd>
+        <dt class="col-3">stock</dt>
+        <dd class="col-9" id="lbstock"></dd>
+        <div>
+        <button data-bs-toggle="modal" data-bs-target="#modalregister" class="btn btn-primary">edit</button>
+        </div>
+        </dl>
+    </div>
+    
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script>
+       var userdetails ={
+        pin:'75613'
+        
+       }
+      var attempts = 0;
+       function submitclick(){
+       var pinnumber=document.getElementById("txtinput").value;
+      
+       if(pinnumber==userdetails.pin){
+        document.getElementById("txtvalid").innerHTML="valid pin"
+       }else {
+                // PIN is incorrect, increment the number of attempts
+                attempts++;
+                document.getElementById("txtvalid").innerHTML = "Invalid PIN. Attempts: " + attempts;
+
+                if (attempts >= 3) {
+                    // Block access after three incorrect attempts
+                     document.getElementById("txtvalid").textContent = "Access blocked! and try after 24 hours";
+                    document.getElementById("txtinput").disabled = true; // Disable the input field\
+
+                   
+                }
+            }
+       }
+    
+         
+     </script>
+    </head>
+    <body>
+      <fieldset>
+        <legend> your pin [max 3 items]</legend>
+        <input type="text" id="txtinput" size="5"> <button onclick="submitclick()">submit</button>
+        <p id="txtvalid"></p>
+      </fieldset>  
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <head>
+       <title>card</title>
+       <script>
+         var products=[
+            {Name:"mobile",price:12000.44,photo:"../assets/visa.PNG"},
+            {Name:"mobile",price:12000.44,photo:"../assets/watch.jpg"},
+            {Name:"mobile",price:12000.44,photo:"../assets/master.PNG"},
+            {Name:"mobile",price:12000.44,photo:"../assets/master.PNG"}
+          ];
+          function bodyLoad(){
+           for(var product of products){
+        var card =document.createElement("div");
+         card.className="card  m-2 p-2";
+         card.style.width="300px";
+         card.innerHTML=`
+         <img src=${product.photo} height="300" width="50"   class="card-img-top">
+         <div class="card-header">
+            <h2>visa card</h2><div>
+         </div>
+         </div>
+         <div class="card-body">
+            <p>&#8377;${product.price}</p>
+         </div>
+         <div class="card-footer">
+            <button class="btn btn-danger w-100">
+                <span class="bi bi-cart4"></span>Add to cart
+            </button>
+         </div>
+         `;
+           document.getElementById("catlog").appendChild(card);
+           }
+          }
+       </script>
+    </head>
+    <body onload="bodyLoad()" class="container-fluid">
+        <div id="catlog" class="d-flex flex-wrap m-4" >
+
+        </div>
+    </body>
+</html>
